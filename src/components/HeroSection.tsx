@@ -1,5 +1,5 @@
-
 'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -15,49 +15,47 @@ interface HeroCardProps {
 }
 
 export default function HeroSection({
-  title = "Live in rooms that feel like you",
-  subtitle = "PREMIUM INTERIOR & FURNITURE",
-  description = "Bespoke interiors and handcrafted furniture for modern homes.",
-  image = "https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-sofa/thumbnail.webp",
-  primaryCtaText = "Book a consultation",
-  primaryCtaLink = "#",
-  secondaryCtaText = "Explore Collection",
-  secondaryCtaLink = "#collection",
+  title = 'Live in rooms that feel like you',
+  subtitle = 'PREMIUM INTERIOR & FURNITURE',
+  description = 'Bespoke interiors and timeless furniture designed to bring warmth, comfort, and elegance to your home.',
+  image,
+  primaryCtaText = 'Book a Consultation',
+  primaryCtaLink = '#services',
+  secondaryCtaText = 'Explore Collection',
+  secondaryCtaLink = '#collection',
 }: HeroCardProps) {
   return (
-    <section className="w-full bg-[#F7F4EC] rounded-2xl p-6 sm:p-10 lg:p-16 my-8">
-      <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
-        
-        {/* Left Side: Text & Buttons */}
-        <div className="flex flex-col justify-center">
-          {subtitle && (
-            <span className="text-xs font-mono uppercase tracking-widest text-neutral-500 mb-3">
-              {subtitle}
-            </span>
-          )}
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-neutral-900 leading-tight mb-4">
+    <section className="bg-[#F9F8F6] px-4 py-8 sm:px-8 sm:py-12 lg:px-16 lg:py-16">
+      <div className="mx-auto grid max-w-[1440px] items-center gap-8 overflow-hidden rounded-2xl border border-[#964B00]/10 bg-white p-5 shadow-sm sm:p-8 lg:grid-cols-2 lg:gap-12 lg:p-12">
+
+        {/* Hero Content */}
+        <div className="py-2 lg:py-6">
+          <p className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-[#964B00]">
+            {subtitle}
+          </p>
+
+          <h1 className="max-w-xl font-serif text-4xl font-medium leading-tight text-[#5C2E00] sm:text-5xl lg:text-6xl">
             {title}
           </h1>
-          {description && (
-            <p className="text-sm sm:text-base text-neutral-600 mb-8 max-w-md">
-              {description}
-            </p>
-          )}
 
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap items-center gap-4">
+          <p className="mt-5 max-w-lg text-sm leading-7 text-neutral-600 sm:text-base">
+            {description}
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-3">
             {primaryCtaText && (
-              <Link 
+              <Link
                 href={primaryCtaLink}
-                className="bg-[#8B5A2B] hover:bg-[#704822] text-white text-xs uppercase tracking-wider px-6 py-3.5 rounded-md font-medium transition shadow-sm"
+                className="rounded-md bg-[#964B00] px-6 py-3.5 text-xs font-semibold uppercase tracking-wider text-white transition hover:bg-[#5C2E00] focus:outline-none focus:ring-2 focus:ring-[#964B00] focus:ring-offset-2"
               >
                 {primaryCtaText}
               </Link>
             )}
+
             {secondaryCtaText && (
-              <Link 
+              <Link
                 href={secondaryCtaLink}
-                className="bg-transparent hover:bg-neutral-200/50 text-neutral-900 border border-neutral-300 text-xs uppercase tracking-wider px-6 py-3.5 rounded-md font-medium transition"
+                className="rounded-md border border-[#964B00]/30 px-6 py-3.5 text-xs font-semibold uppercase tracking-wider text-[#5C2E00] transition hover:bg-[#F9F8F6] focus:outline-none focus:ring-2 focus:ring-[#964B00] focus:ring-offset-2"
               >
                 {secondaryCtaText}
               </Link>
@@ -65,20 +63,24 @@ export default function HeroSection({
           </div>
         </div>
 
-        {/* Right Side: Image */}
-        <div className="relative h-[300px] sm:h-[400px] lg:h-[450px] w-full rounded-xl overflow-hidden shadow-md bg-neutral-200">
-          <Image 
-            src={image} 
-            alt="Hero Interior" 
-            fill 
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover"
+        {/* Hero Image */}
+        <div className="relative h-[280px] overflow-hidden rounded-xl bg-[#EFE7DF] sm:h-[380px] lg:h-[480px]">
+          <Image
+            src={
+              image ||
+              'https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-sofa/thumbnail.webp'
+            }
+            alt="Elegant furniture in a thoughtfully designed interior"
+            fill
             priority
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover transition duration-700 hover:scale-105"
           />
+
+          <div className="absolute inset-0 bg-gradient-to-t from-[#5C2E00]/20 to-transparent" />
         </div>
 
       </div>
     </section>
   );
 }
-
